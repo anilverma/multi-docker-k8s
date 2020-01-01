@@ -13,18 +13,39 @@ script:
     
 
 after_sucess:
-    -docker build -t anilverma/multi-frontend ./frontend
-    -docker build -t anilverma/multi-nginx ./nginx
-    -docker build -t anilverma/multi-server ./server
-    -docker build -t anilverma/multi-worker ./worker
-
-
-    #Log in to the docker CLI
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+        - docker build -t anilverma/multi-frontend ./frontend
+        - docker build -t anilverma/multi-nginx ./nginx
+        - docker build -t anilverma/multi-server ./server
+        - docker build -t anilverma/multi-worker ./worker
     
-    #Take those images and push them to docker hub
+
+        #Log in to the docker CLI
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+        
+        #Take those images and push them to docker hub
+        
+        - docker push anilverma/multi-frontend
+        - docker push anilverma/multi-nginx
+        - docker push anilverma/multi-server
+        - docker push anilverma/multi-worker
+        
     
-    - docker push anilverma/multi-frontend
-    - docker push anilverma/multi-nginx
-    - docker push anilverma/multi-server
-    - docker push anilverma/multi-worker
+
+#deploy:
+ # provider: elasticbeanstalk
+  #access_key_id: "$AWS_ACCESS_KEY"
+    
+  #secret_access_key: "$AWS_SECRET_KEY"
+    
+  #region: "us-east-2"
+  #app: "multi-docker"
+  #env: "MultiDocker-env"
+  #bucket_name: "elasticbeanstalk-us-east-2-002829650677"  
+  #bucket_path: "docker-react" 
+  #on:
+   # branch: master  
+    
+    
+    
+    
+    
