@@ -6,26 +6,44 @@ services:
     - docker
     
 before_install:
-    - docker build -t anilverma/docker-react -f Dockerfile.dev .
+    - docker build -t anilverma/multi-docker -f ./frontend/Dockerfile.dev .
 
 script:
-    - docker run -e CI=true anilverma/docker-react npm run test
-    
+    - docker run -e CI=true anilverma/multi-docker npm run test
     
 
-deploy:
-  provider: elasticbeanstalk
-  access_key_id: "$AWS_ACCESS_KEY"
+after_sucess:
+        -docker build -t anilverma/multi-frontend ./frontend
+        -docker build -t anilverma/multi-nginx ./nginx
+        -docker build -t anilverma/multi-server ./server
+        -docker build -t anilverma/multi-worker ./worker
     
-  secret_access_key: "$AWS_SECRET_KEY"
+
+        #Log in to the docker CLI
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+        
+        #Take those images and push them to docker hub
+        
+        - docker push anilverma/multi-frontend
+        - docker push anilverma/multi-nginx
+        - docker push anilverma/multi-server
+        - docker push anilverma/multi-worker
+        
     
-  region: "us-east-2"
-  app: "docker-react"
-  env: "DockerReact-env"
-  bucket_name: "elasticbeanstalk-us-east-2-002829650677"  
-  bucket_path: "docker-react" 
-  on:
-    branch: master  
+
+#deploy:
+ # provider: elasticbeanstalk
+  #access_key_id: "$AWS_ACCESS_KEY"
+    
+  #secret_access_key: "$AWS_SECRET_KEY"
+    
+  #region: "us-east-2"
+  #app: "multi-docker"
+  #env: "MultiDocker-env"
+  #bucket_name: "elasticbeanstalk-us-east-2-002829650677"  
+  #bucket_path: "docker-react" 
+  #on:
+   # branch: master  
     
     
     
