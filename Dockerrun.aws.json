@@ -15,20 +15,23 @@
 			"memory": 128
 		},
 		{
-			"name": "server",
+			"name": "api",
 			"image": "anilverma/multi-server",
 			"hostname": "api",
 			"essential": "false",
 			"memory": 128
 		},{
-			"name": "nginx",
+			"name": "nginx-proxy",
 			"image": "anilverma/multi-nginx",
 			"essential": "true",
 			"portMappings": [{
 				"hostPort": 80,
 				"containerPort": 80
 			}],
-			"memory":64
+			"memory":64,
+			 "links": [
+       				 "frontend", "api"
+      		          ]
                        
 		}
 	]
