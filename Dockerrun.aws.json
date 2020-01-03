@@ -18,8 +18,16 @@
 			"name": "server",
 			"image": "anilverma/multi-server",
 			"hostname": "api",
-			"essential": "true",
+			"essential": "false",
 			"memory": 128
+		},{
+			"name": "nginx",
+			"image": "anilverma/multi-nginx",
+			"essential": "true",
+			"portMappings": [{
+				"hostPort": 80,
+				"containerPort": 80
+			}]
 		}
 	]
 }
