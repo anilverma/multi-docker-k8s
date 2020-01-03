@@ -37,10 +37,10 @@ deploy:
   secret_access_key:
     secure: $AWS_SECRET_KEY
   region: us-east-2
-  app: docker-test
-  env: DockerTest-env
+  app: multi-docker
+  env: MultiDocker-env
   bucket_name: elasticbeanstalk-us-east-2-002829650677
-  bucket_path: docker-test
+  bucket_path: multi-docker
   on:
     branch: master  
     
