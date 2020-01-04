@@ -30,7 +30,7 @@
 				"containerPort": 80
 			}],
 			"links": ["frontend"],
-			"memory":64
+			"memory": 64
 			
 		}
 	]
