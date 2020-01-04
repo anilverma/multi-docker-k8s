@@ -4,12 +4,8 @@
 			"name": "frontend",
 			"image": "anilverma/multi-frontend",
 			"hostname": "frontend",
-			"essential": "true",
-			"memory": 128,
-			"portMappings": [{
-				"hostPort": 3000,
-				"containerPort": 3000
-			}]
+			"essential": "false",
+			"memory": 128
 		},
 		{
 			"name": "worker",
@@ -24,6 +20,18 @@
 			"hostname": "api",
 			"essential": "false",
 			"memory": 128
+		},{
+			"name": "nginx-proxy",
+			"image": "anilverma/multi-nginx",
+			"essential": "true",
+			"portMappings": [{
+				"hostPort": 80,
+				"containerPort": 80
+			}],
+			"memory":64,
+			"links":["frontend","api"]
+			
+                       
 		}
 	]
 }
