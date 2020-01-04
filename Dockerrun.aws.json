@@ -20,7 +20,8 @@
 			"hostname": "api",
 			"essential": "false",
 			"memory": 128
-		},{
+		},
+		{
 			"name": "nginx-proxy",
 			"image": "anilverma/multi-nginx",
 			"essential": "true",
@@ -28,10 +29,7 @@
 				"hostPort": 80,
 				"containerPort": 80
 			}],
-			"memory":64,
-			"links":["api","frontend"]
-			
-                       
+			"memory":64
 		}
 	]
 }
