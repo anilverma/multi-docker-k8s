@@ -4,7 +4,7 @@
 			"name": "frontend",
 			"image": "anilverma/multi-frontend",
 			"hostname": "frontend",
-			"essential": "false",
+			"essential": "true",
 			"memory": 128
 		},
 		{
