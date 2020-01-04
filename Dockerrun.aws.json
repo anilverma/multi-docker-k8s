@@ -28,7 +28,8 @@
 				"hostPort": 80,
 				"containerPort": 80
 			}],
-			"memory":64
+			"memory":64,
+			"links":["api","frontend"]
 			
                        
 		}
