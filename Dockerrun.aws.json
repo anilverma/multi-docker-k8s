@@ -5,7 +5,11 @@
 			"image": "anilverma/multi-frontend",
 			"hostname": "frontend",
 			"essential": "true",
-			"memory": 128
+			"memory": 128,
+			"portMappings": [{
+				"hostPort": 3000,
+				"containerPort": 3000
+			}]
 		},
 		{
 			"name": "worker",
