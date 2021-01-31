@@ -14,18 +14,13 @@ spec:
     spec:
       containers:
       - name: worker
-        image: stephengrider/multi-worker
+        image: anilverma/multi-worker
+        env:
+          - name: REDIS_HOST 
+            value: redis-cluster-ip-service
+          - name: REDIS_PORT 
+            value: "6379"
         resources:
           limits:
             memory: "64Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 5000
-        env:
-          - name: REDIS_HOST
-            value: redis-cluster-ip-service
-          - name: REDIS_PORT
-            value: "6379"
-
-
-
+            cpu: "100m"
