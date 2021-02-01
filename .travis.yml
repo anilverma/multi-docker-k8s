@@ -24,7 +24,7 @@ before_install:
 - gcloud config set compute/zone us-central1-c
 - gcloud container clusters get-credentials cluster-1
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build -t anilverma/react-test -f ./frontend/Dockerfile.dev
+- docker build -t anilverma/react-test -f ./frontend/Dockerfile.dev ./frontend
 
 
 script:
