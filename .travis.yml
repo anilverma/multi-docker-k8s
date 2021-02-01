@@ -18,10 +18,10 @@ before_install:
   CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
 - source $HOME/google-cloud-sdk/path.bash.inc
 - gcloud components update kubectl
-- gccloud auth activate-service-account --key-file service-account.json
-- gccloud config set project multi-k8s-303414
-- gccloud config set compute/zone us-central1-c
-- gccloud container clusters get-credentials cluster-1
+- gcloud auth activate-service-account --key-file service-account.json
+- gcloud config set project multi-k8s-303414
+- gcloud config set compute/zone us-central1-c
+- gcloud container clusters get-credentials cluster-1
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 - docker build -t anilverma/react-test -f ./frontend/Dockerfile.dev
 
