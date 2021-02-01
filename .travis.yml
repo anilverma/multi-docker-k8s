@@ -28,7 +28,7 @@ before_install:
 
 
 script:
-  - docker run anilverma/react-test npm test -- --coverage
+  - docker run -e CI=true anilverma/react-test npm test
 
 deploy:
   provider: script
