@@ -14,7 +14,7 @@ spec:
         - www.multi-k8s.ml
       secretName:  multi-k8s-ml
   rules:
-    - hosts: multi-k8s.ml  
+    - host: multi-k8s.ml  
       http:
           paths:
             - path: /
@@ -22,7 +22,7 @@ spec:
               backend:
                 serviceName: client-cluster-ip-service
                 servicePort: 3000
-    - hosts: www.multi-k8s.ml  
+    - host: www.multi-k8s.ml  
       http:
           paths:
             - path: /
