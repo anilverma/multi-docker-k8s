@@ -14,3 +14,4 @@ docker push anilverma/multi-server:$SHA
 docker push anilverma/multi-worker:$SHA
 
 kubectl apply -f k8s
+
