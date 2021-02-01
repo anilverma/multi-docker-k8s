@@ -13,3 +13,6 @@ docker push anilverma/multi-worker:$SHA
 
 kubectl apply -f k8s
 
+kubectl set image deployments/server-deployment server=anilverma/multi-server:$SHA
+kubectl set image deployments/client-deployment client=anilverma/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=anilverma/multi-worker:$SHA
